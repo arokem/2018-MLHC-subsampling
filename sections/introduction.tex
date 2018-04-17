@@ -1,0 +1,148 @@
+\section{Introduction}\label{sec:intro}
+
+Deep learning (DL) algorithms \citep{LeCun2015-js} have been tremendously
+successful at solving a variety of different computational tasks. Although these
+algorithms were originally developed to perform computer vision tasks that
+require the identification and classification of natural objects in images
+\citep{Krizhevsky2012-az}, they have been more recently successfully applied in
+tasks as varied as automated captioning and description of images and
+videos\citep{Karpathy2014-nx, Donahue2014-uq}, automated transcription of spoken
+language \citep{Hannun2014-uj} automated translation \citep{Wu2016-kx}, and in
+playing games such as Go \citep{Silver2016-uv} and Poker \citep{Hsu2017-cr},
+beating even highly seasoned players in these games.
+
+A key to the success of these algorithms in image processing is that they do not
+require feature engineering of their front-end filters. Instead, these filters
+are empirically learned from the data through a process of training. For
+example, a network is trained to identify natural objects by exposing it to
+labeled exemplars of images containing the classes to be discriminated. The
+weights that define the front-end filters, and their pooling in higher levels
+are automatically adjusted through gradient descent. Progress in the
+implementation of the computation of the gradients required for this process on
+graphical processing units (GPUs) has been instrumental in enabling use of these
+techniques on large and complex data-sets. No less important have been the
+discovery of network architectures \citep{Canziani2016-ps}, non-linearities
+\citep{Glorot2011-hk}, regularization procedures \citep{Hinton2012-fm} and
+initialization procedures \citep{Glorot2010-is} that accelerate and improve
+learning. Taken together, these factors have ushered in an era where training of
+large DL networks has become practical, and there is wide-spread interest in
+applying these algorithms to a variety of different tasks.
+
+\subsection{Deep Learning in medical imaging}
+
+Because DL algorithms were originally developed to perform difficult image
+processing and classification tasks, one of the compelling avenues for
+application of DL is in the analysis of data from medical imaging technologies,
+and the development of computer-assisted diagnostic systems with DL-trained
+networks at their core. This type of application is rapidly becoming more
+realistic because of the combination of high-quality biomedical imaging
+technologies that are becoming common in clinical practice, and the development
+of large data-sets for the training of these networks. These large data-sets are
+the result of years of accumulation of electronic medical records (EMR),
+data-bases that include both image data, as well as expert-generated diagnostic
+labels. Several recent studies used data from such data-bases in tandem with DL
+networks to demonstrate the potential for highly accurate automated diagnosis of
+diseases from images of skin lesions \citep{Esteva2017-ho} and chest x-ray
+images \citep{Rajpurkar2017-mv}.
+
+Several previous studies demonstrate that DL algorithms are also capable of
+accurate diagnosis of a variety of retinal diseases, based on images acquired
+using standard clinical instruments \citep{Gulshan2016-fh}. For example,
+optical coherence tomography (OCT) images are taken at a high resolution, and
+provide information about the three-dimensional structure of the tissue. These
+images are routinely collected during clinical ophthalmological visits, and are
+normally used by clinicians to assess the presence of retinal diseases, and
+determine the appropriate course of treatment. EMR datasets of OCT image data,
+together with these expert-generated labels, have been used to demonstrate the
+feasibility of automated diagnosis of a variety of conditions
+\citep{Gulshan2016-fh, lee2017deep, Lee2017-vp, Awais2017-qw, Kermany2018-bq}.
+For example, in a previous study, a VGG16 DL network architecture designed for
+object recognition \citep{Simonyan2014-al}, can distinguish OCT scans from
+retinae of patients with age-related macular degeneration (AMD) from healthy
+retinae with an accuracy of 88.98\% (ROC AUC of 93.83\%, peak sensitivity 92.64
+\%, peak specificity 93.69 \%) \citep{lee2017deep}. Here, we use the same
+architecture and similar data, to address the question of data requirements for
+successful performance.
+
+\subsection{How many samples do you need?}
+
+Previous applications of DL in medical imaging rely on large data sets, that
+are not available for many other technologies, and for diseases that are less
+common. A major barrier to the wide-spread application of DL algorithms in
+medical imaging is the assumption that these algorithms only work well when
+data is extremely abundant, and that supervised learning can progress using
+accurate labels of each image\footnote{``As of 2016, a rough rule of thumb is
+that a supervised deep learning algorithm will generally achieve acceptable
+performance with around 5,000 labeled examples per category, and will match or
+exceed human performance when trained with a dataset containing at least 10
+million labeled examples.'' \citep{Goodfellow-et-al-2016}, page 20}. Indeed, in
+previous work using DL for AMD classification, the network was trained with a
+data-set of $\sim$100,000 images \citep{lee2017deep}. Similarly, other studies
+have used data-bases with many thousands of patients and up to millions of
+individual images \citep{Kermany2018-bq}.
+
+Here, we use sub-sampling procedure to assess the decrease in DL
+classification performance as a function of the number of samples. We apply this
+procedure to empirically evaluate the performance of the VGG16 architecture in
+detecting AMD in retinal OCT. To our knowledge, there is only one previous
+study asking how many samples are needed in biomedical image classification
+\citep{Cho2015data_size}. The authors of this study trained a DL network to
+discriminate between six classes of images (brain, neck, shoulder, etc.) from
+MRI images. They found that only a few hundred images are required to reach
+near-perfect accuracy in this task using the GoogLeNet network. However, images
+of these body parts differ in many respects, and it is not clear that a much
+simpler algorithm would not perform just as well in this classification task.
+We focused instead on a classification task in which DL algorithms are required
+to perform more accurately than traditional image processing methods
+\citep{Lemaitre2016-gu}. We introduce a resampling procedure to test the size
+of the sample needed in order to train a DL network on a biomedical image
+classification task, and use this procedure in order to assess the number of
+samples needed to train network to accurately discriminate between AMD and
+healthy retinae from OCT.
+
+\subsection{Cross-validation and the importance of a separate test set}
+
+To avoid over-fitting, and to provide an objective and accurate evaluation of
+the performance of a classification algorithm, it is common to separate the data
+into several different sets: a \emph{training set} is used to learn the
+dependencies between input data and model class labels, and to adjust the
+parameters of the model. A \emph{validation set} is sometimes used to assess the
+current state of the model during training. This is done by feeding a sample or
+samples from the validation set through the algorithm, with a fixed set of
+parameters, and evaluating the accuracy of the classification with these
+parameter values, but without using the results to adjust the parameters.
+
+Often, an additional data set is set aside as \emph{test set}. This set is used
+once the learning has ended, as a single independent estimate of the endpoint of
+learning. While using an independent data set completely guards against the
+danger of over-fitting, it also might introduce the danger of variability in the
+estimate of error, especially with a relatively small size of the test set
+\citep{Efron1983-vu}.
+
+In cross-validation, different parts of the data might serve separately as
+training and validation data sets \citep{Stone1974-mo}. For example, in k-fold
+cross-validation training is repeated several times, where in each iteration
+through the procedure, a portion of $N/k$ samples from the data are designated
+as a validation set, and the remaining data is used for training. After $k$
+repetitions of this procedure, all the data has been used up as validation data.
+This means that a full set of errors on the entire data-set has been computed.
+This procedure is sometimes used for comparative evaluation of different models,
+and for model selection (by comparing cross-validation errors for two or more
+models) \citep{Stone1977-ez}.
+
+While this procedure is comprehensive, and potentially reduces variability of
+the estimates, it is also computationally demanding. For this reason, training
+of DL algorithms usually uses the strategy of training on a sub-set of the data
+and then using other sub-sets for evaluation and testing.  Furthermore, given
+the large amounts of data that are often available for training and evaluation,
+the final test step is often omitted in applications of DL. For example, in
+their highly influential paper on image classification from the ImageNet
+dataset, Krizhevsky et al. \citep{Krizhevsky2012-qc} comment that: ``In the
+remainder of this paragraph, we use validation and test error rates
+interchangeably because in our experience they do not differ by more than
+0.1\%''.
+
+The resampling scheme introduced here also presents an opportunity to evaluate
+whether this statement generalizes well to situations in which data is much less
+abundant. Therefore, a second aim of the present paper is to assess the use of a
+separate test in cross-validation of a DL network.

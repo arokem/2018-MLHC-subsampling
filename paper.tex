@@ -1,0 +1,65 @@
+\documentclass[twoside,11pt]{article}
+
+% Any additional packages needed should be included after jmlr2e.
+% Note that jmlr2e.sty includes epsfig, amssymb, natbib and graphicx,
+% and defines many common macros, such as 'proof' and 'example'.
+%
+% It also sets the bibliographystyle to plainnat; for more information on
+% natbib citation styles, see the natbib documentation, a copy of which
+% is archived at http://www.jmlr.org/format/natbib.pdf
+
+\usepackage{jmlr2e}
+\usepackage{multirow}
+
+
+% Definitions of handy macros can go here
+
+\newcommand{\dataset}{{\cal D}}
+\newcommand{\fracpartial}[2]{\frac{\partial #1}{\partial  #2}}
+
+% Heading arguments are {volume}{year}{pages}{submitted}{published}{author-full-names}
+
+% Short headings should be running head and authors last names
+\ShortHeadings{Deep learning from limited data}{Rokem, PhD, Wu, PhD, and Lee, MSc, MD}
+\firstpageno{1}
+
+\begin{document}
+
+\title{Deep learning from limited amounts of data: a sub-sampling study of classification from optical coherence tomography images}
+
+\author{\name Ariel Rokem \email arokem@uw.edu \\
+       \addr eScience Institute\\
+       The University of Washington\\
+       Seattle, WA, USA
+       \AND
+       \name Yue Wu  \email wu5@post.harvard.edu \\
+       \addr Department of Ophthalmology\\
+       The University of Washington\\
+       Seattle, WA, USA
+       \AND
+      \name Aaron Lee \email leeay@uw.edu\\
+      \addr Department of Ophthalmology\\
+      The University of Washington\\
+      Seattle, WA, USA}
+
+\maketitle
+
+\include{sections/abstract}
+\include{sections/introduction}
+\include{sections/methods}
+\include{sections/results}
+
+\subsection{Evaluation Approach/Study Design}
+
+Before jumping into the results: what exactly are you evaluating?
+Tell us (or remind us) about your study design and evaluation
+criteria.
+
+\include{sections/conclusions}
+
+% ACKNOWLEDGEMENTS ONLY GO IN THE CAMERA-READY, NOT THE SUBMISSION
+% \acks{Many thanks to all collaborators and funders!}
+
+\bibliography{paper}
+
+\end{document}

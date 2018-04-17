@@ -1,0 +1,74 @@
+\section{Methods}
+
+This study was approved by the Institutional Review Board of
+the University
+% of Washington (UW)
+and adhered to the tenets of the Declaration of Helsinki and the Health
+Insurance Portability and Accountability Act.
+
+\subsection{Data extraction}
+Macular OCT scans were acquired in the course of clinical care, using a
+Heidelberg Spectralis OCT scanner (Heidelberg Engineering, Heidelberg, Germany).
+High-resolution images of the retinal cross-section were obtained using a
+61-line raster scan. All of the images from the period 2006 to 2016 were
+extracted using an automated extraction tool from the instrument imaging
+database. The images were linked by patient medical record number and dates to
+the clinical data stored in EPIC. Specifically, all clinical diagnoses and the
+dates of every clinical encounter, macular laser procedure, and intravitreal
+injection were extracted from the EPIC Clarity tables.
+
+\subsubsection{Patient and Image Selection}
+
+A normal patient was defined as having no retinal International Classification
+of Diseases, 9th Revision (ICD-9) diagnosis and better than 20/30 vision in both
+eyes during the entirety of their recorded clinical history at the University. An AMD
+patient was defined as having an ICD-9 diagnosis of AMD (codes 362.50, 362.51,f
+and 362.52) by a retina specialist, at least 1 intravitreal injection in either
+eye, and worse than 20/30 vision in the better-seeing eye. Patients with other
+macular pathology by ICD-9 code were excluded. These parameters were chosen
+\emph{a priori} to ensure that macular pathology was most likely present in both
+eyes in the AMD patients and absent in both eyes in the normal patients.
+Consecutive images of patients meeting these criteria were included, and no
+images were excluded due to image quality. Labels from the EMR were then linked
+to the OCT macular images, and the data were stripped of all protected health
+identifiers.
+
+As most of the macular pathology is concentrated in the foveal region, the
+decision was made \emph{a priori} to select the central 11 images from each
+macular OCT set, and each image was then treated independently, and labeled as
+either normal or AMD. The images were histogram equalized and the resolution
+down-sampled to 192 by 124 pixels to accommodate RAM limitations.
+
+\subsection{Deep Learning Classification Model}
+
+A modified version of the VGG16 convolutional neural network
+\cite{Simonyan2014-al} was implemented using Caffe \cite{jia2014caffe}. This
+network was originally designed to classify categories in natural images and was
+adapted here to classify healthy and AMD retinae. Weights were initialized using
+the Xavier algorithm \cite{Glorot2010-is}. Training was then performed using
+multiple iterations, each with a batch size of 100 images. ADAM optimization
+\cite{Kingma2014-jl} was used with a starting learning rate of $2 \times
+10^{-7}$ and the momentum parameters set to 0.9 and 0.99. The loss of the model
+was recorded at each training iteration, and cross-validation with a separate
+validation set was conducted every 250 iterations. The training was stopped when
+the loss of the model decreased and the accuracy of the validation set
+also decreased (indicating that the model was in the over-fitting regime).
+
+\subsection{Sub-sampling experiments}
+
+At the outset of the experiments, a random subset of 10\% of the images were
+segregated at the patient level into a separate \emph{test set} of images. These
+would be used to test the performance of the DL network at the end of training.
+The remaining 90\% of the images were then segregated into 11 replicates of
+random subsets of 4\%, 8\%, 16\%, 32\%, 64\%, and 100\% of the available images.
+Within each subset, the images were again subdivided into 75\% for training and
+25\% for validation. Care was taken to ensure that the validation set and the
+training set contained images from a mutually exclusive group of patients (ie,
+no single patient contributed images to both the training and validation sets).
+The order of images of the training set was then randomized in each replication
+condition.
+
+Each replication condition was then trained for a total of 75,000 iterations
+and the maximal validation accuracy was recorded. The weights at the time of
+the maximal validation accuracy was used to assess the performance of the
+network against the held-out test set.
