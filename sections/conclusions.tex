@@ -2,10 +2,10 @@
 
 The application of DL in biomedical imaging is a promising avenue in current
 research. Future developments in this field may lead to accurate
-computer-assisted diagnosis systems with DL networks at their core. However, to improve the development of these systems, and to apply them we need to develop a better
-major impediment to these developments is the assumption that DL requires very
-large data-sets that are not available for many types of nascent imaging
-technologies, or in the case of diseases that are relatively uncommon.
+computer-assisted diagnosis systems with DL networks at their core.  
+A major current impediment to these developments is the assumption that DL 
+requires very large data-sets that are not available for many types of nascent 
+imaging technologies, or in the case of diseases that are relatively uncommon.
 
 In the present work, we investigated the feasibility of DL with relatively small
 sample sizes. We focused on a prototype of computer-assisted diagnosis system
@@ -112,6 +112,13 @@ accuracy assessment on a separate test set relative to assessment of accuracy on
 a validation set that is repeatedly used during training. This finding is
 consistent with previous anecdotal evidence that has been mentioned in the
 literature \cite{Krizhevsky2012-qc}.
+
+An important limitation of this conclusion is that in the present study, 
+the test set comes from the same pool of images and labels as the training 
+and validation sets. In some cases, an independent test set can be acquired 
+with a higher (``gold-standard'') level of accuracy. In these cases, it might
+still be important to eventually evaluate the performance of the algorithm 
+on a separate test set. 
 
 Both of these findings may arise from the large number of parameters that are
 fit through the DL algorithm. The learning procedure may thus converge to

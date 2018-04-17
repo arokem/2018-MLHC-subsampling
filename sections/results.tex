@@ -3,7 +3,7 @@
 \subsection{Data and subsampling}
 
 More than 2.6 million optical coherence tomography (OCT) images were extracted
-from the imaging database and linked to clinical data from the electronica
+from the imaging database and linked to clinical data from the electronical
 medical records (EMR). A total of 48,312 normal OCT scans and 52,690 AMD scans
 met the inclusion criteria for use in the training set. At the outset, a test
 set was set aside comprising of 9,493 images, to be used only for evaluation of
@@ -50,7 +50,7 @@ accuracy during training are shown in Figure \ref{fig_learning_curves}.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=3.5in]{./figures/learning}
+\includegraphics[width=3in]{./figures/learning}
 
 \caption{Learning curves for each subset size (percent). In each sub-plot,
 validation accuracy is plotted against number of training iterations. Each of
@@ -74,13 +74,11 @@ Though accuracy is far from chance even with only 4 \% of the data ($\sim$73\%
 correct) it does increase precipitously between 4\% and 64\% of the data.
 However, it reaches close-to-maximal accuracy already at a proportion 16 - 32\%
 of the total data-set. To quantify the amount of data needed to reach 95\% of
-the maximal accuracy, we fit a two-parameter logistic function to the accuracy
-values across repetitions and sub-sample proportions (orange line in figure
-\ref{fig_test}), fixing the saturation point of the function to be equal
-to the mean accuracy at subsamples of 100 \% of the data. Inverting this
-function, we find that 95\% of the maximal accuracy (approximately 82\%
-accuracy) can already be achieved with 20\% of the data (dashed lines in
-\ref{fig_test}).
+the maximal accuracy, we fit a two-parameter function, $f(x) = a log(x) + b$,
+to the accuracy values across repetitions and sub-sample proportions (orange 
+line in figure \ref{fig_test}). Inverting this function, we find that 95\% of 
+the maximal accuracy (approximately 82\% accuracy) can already be achieved with 
+$\sim30\%$ of the data (dashed lines in \ref{fig_test}).
 
 \begin{figure}[!t]
 \centering
@@ -89,9 +87,9 @@ accuracy) can already be achieved with 20\% of the data (dashed lines in
 \caption{Accuracy on held out test set. Weights from the highest validation
 accuracy during training were used to test accuracy on a held out test set. Dark
 blue points are the means across 11 repetitions, with dark blue standard
-deviation error bars. Orange line: a logistic curve model was fit to all of the
-repetitions and sub-samples. According to this model, 95\% of maximal accuracy
-($\sim$82 \% accuracy) can be achieved with 20.84\% of the data (dashed lines).}
+deviation error bars. Orange line: a model was fit to all of the sub-samples and 
+repetitions. According to this model, 95\% of maximal accuracy
+($\sim$82 \% accuracy) can be achieved with 27.2\% of the data (gray lines).}
 
 \label{fig_test}
 \end{figure}
@@ -151,7 +149,8 @@ maximal validation accuracy achieved during this course of training, while the
 ordinate represents the accuracy of the network in performing the classification
 on a separate test set, using the same weights that resulted in maximal
 validation accuracy. Solid colored points each represent the mean across 11
-courses of training for each size subset, with standard deviation error bars. Dashed line indicates equality.}
+courses of training for each size subset, with standard deviation error bars. 
+Dashed line indicates equality.}
 
 \label{fig_diff}
 \end{figure}
