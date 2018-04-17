@@ -113,11 +113,11 @@ parameters, and evaluating the accuracy of the classification with these
 parameter values, but without using the results to adjust the parameters.
 
 Often, an additional data set is set aside as \emph{test set}. This set is used
-once the learning has ended, as a single independent estimate of the endpoint of
-learning. While using an independent data set completely guards against the
-danger of over-fitting, it also might introduce the danger of variability in the
-estimate of error, especially with a relatively small size of the test set
-\citep{Efron1983-vu}.
+once the learning has ended, to provide an independent evaluation of the 
+accuracy of the learning procedure. While using an independent data set guards 
+against over-optimism due to over-fitting, it also might introduce 
+variability in the estimate of error, especially with a relatively small size 
+of the test set \citep{Efron1983-vu}.
 
 In cross-validation, different parts of the data might serve separately as
 training and validation data sets \citep{Stone1974-mo}. For example, in k-fold
@@ -132,7 +132,7 @@ models) \citep{Stone1977-ez}.
 
 While this procedure is comprehensive, and potentially reduces variability of
 the estimates, it is also computationally demanding. For this reason, training
-of DL algorithms usually uses the strategy of training on a sub-set of the data
+of DL algorithms usually uses the strategy of training on a subset of the data
 and then using other sub-sets for evaluation and testing.  Furthermore, given
 the large amounts of data that are often available for training and evaluation,
 the final test step is often omitted in applications of DL. For example, in
