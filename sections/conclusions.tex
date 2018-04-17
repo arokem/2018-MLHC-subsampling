@@ -32,8 +32,8 @@ better data.
 
 The relatively small number  of images required to train a DL network on this
 classification task is surprising given the VGG16 network has as many as 138M
-parameters \cite{Canziani2016-ps}. Indeed, previous literature using similar
-networks (e.g. \cite{Krizhevsky2012-az, Simonyan2014-al}) used many millions of
+parameters \citep{Canziani2016-ps}. Indeed, previous literature using similar
+networks (e.g. \citep{Krizhevsky2012-az, Simonyan2014-al}) used many millions of
 training samples to reach high accuracy. The discrepancy between our findings
 and the previous literature may stem from the differences between the use-case
 we present here, and the common use-cass for DL in previous literature. The
@@ -57,7 +57,7 @@ the data requirements for learning on data such as these.
 
 Nevertheless, given the two-alternative classification task performed here, this
 finding is roughly consistent with the rule of thumb described by
-\cite{Goodfellow-et-al-2016}(``... 5,000 labeled exemplars per category...'').
+\citep{Goodfellow-et-al-2016}(``... 5,000 labeled exemplars per category...'').
 The sub-sampling method introduced here provides a protocol for researchers that
 are interested in asking whether they have enough data to apply DL to their
 biomedical image data.
@@ -73,7 +73,7 @@ new imaging technologies, or that are studying less common disorders.
 
 There are currently two major alternative strategies to use for cases where data
 is limited. Data augmentation synthetically increases the sample size by
-performing transformations on the data \cite{Ciresan2011-ko}. This works well
+performing transformations on the data \citep{Ciresan2011-ko}. This works well
 as long as the transformations performed to do not destroy the information
 necessary for classification, but introduce variability against which the DL
 network should develop tolerance. For clinical imaging data, examples of such
@@ -82,7 +82,7 @@ transformations might be rigid translations and rotations of the image features.
 The other strategy one might use when faced with limited data is transfer
 learning. This strategy is based on the observation that DL algorithms trained
 for different image processing tasks often learn very similar first-stage
-filters \cite{Bengio2012-nh}. Therefore, in this approach learning begins with
+filters \citep{Bengio2012-nh}. Therefore, in this approach learning begins with
 one (larger) data set. This dataset may share only some limited similarity to
 the datasets that are ultimately of interest, but this phase of learning allows
 the network to converge on good enough front-end filters. Once learning in this
@@ -107,11 +107,11 @@ in different subsamples.
 Given the limit on test-set accuracy, one might expect that cross-validation on
 a separate test-set would be crucial, and that results in the test-set might
 differ substantially from the best performance on a validation set
-\cite{Zhang_2017}. Nevertheless, we found no systematic difference in
+\citep{Zhang_2017}. Nevertheless, we found no systematic difference in
 accuracy assessment on a separate test set relative to assessment of accuracy on
 a validation set that is repeatedly used during training. This finding is
 consistent with previous anecdotal evidence that has been mentioned in the
-literature \cite{Krizhevsky2012-qc}.
+literature \citep{Krizhevsky2012-qc}.
 
 An important limitation of this conclusion is that in the present study, 
 the test set comes from the same pool of images and labels as the training 

@@ -42,12 +42,12 @@ down-sampled to 192 by 124 pixels to accommodate RAM limitations.
 \subsection{Deep Learning Classification Model}
 
 A modified version of the VGG16 convolutional neural network
-\cite{Simonyan2014-al} was implemented using Caffe \cite{jia2014caffe}. This
+\citep{Simonyan2014-al} was implemented using Caffe \citep{jia2014caffe}. This
 network was originally designed to classify categories in natural images and was
 adapted here to classify healthy and AMD retinae. Weights were initialized using
-the Xavier algorithm \cite{Glorot2010-is}. Training was then performed using
+the Xavier algorithm \citep{Glorot2010-is}. Training was then performed using
 multiple iterations, each with a batch size of 100 images. ADAM optimization
-\cite{Kingma2014-jl} was used with a starting learning rate of $2 \times
+\citep{Kingma2014-jl} was used with a starting learning rate of $2 \times
 10^{-7}$ and the momentum parameters set to 0.9 and 0.99. The loss of the model
 was recorded at each training iteration, and cross-validation with a separate
 validation set was conducted every 250 iterations. The training was stopped when
