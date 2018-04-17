@@ -1,20 +1,17 @@
 \begin{abstract}
 
-Deep learning algorithms have tremendous potential utility in the
+Deep learning has tremendous potential utility in the
 classification of biomedical images. For example, images acquired with retinal
-optical coherence tomography (OCT) can be used to accurately classify patients
+optical coherence tomography (OCT) can be used to classify patients
 with adult macular degeneration (AMD), and distinguish them from healthy
 control patients. Previous research suggests that large amounts of data are
 required in order to train deep learning (DL) algorithms, because of
 the large number of parameters that need to be fit. To study the data
-requirements of biomedical image classfication with DL, we applied a
-subsampling procedure to DL classification of AMD patients from OCT
-data. We found that classification performance decreases approximately
-constantly with each halving of the data. Moreover, for this task, a relatively
-moderate amount of data (data from approximately 1,800 patients) may be enough
-to reach performance within 5\% of the maximal performance with the full
-dataset. These results suggest that deep learning algorithms can be trained on
-moderate amounts of data, provided that images are relatively homogenous, and 
+requirements of biomedical DL, we applied a subsampling procedure to 
+classification of AMD patients from OCT data. We found that performance 
+decreases approximately constantly with each halving of the data. These 
+results suggest that deep learning algorithms can be trained on
+relatively moderate amounts of data, provided that images are homogenous, and 
 the effective number of parameters is sufficiently small. Furthermore, we 
 demonstrate that in this application, performance evaluation with a separate test set 
 that is not used in any part of the training does not differ substantially from 
