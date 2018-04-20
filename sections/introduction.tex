@@ -94,7 +94,7 @@ of these body parts differ in many respects, and it is not clear that a much
 simpler algorithm would not perform just as well in this classification task.
 We focused instead on a classification task in which DL algorithms are required
 to perform more accurately than traditional image processing methods
-\citep{Lemaitre2016-gu}. We introduce a resampling procedure to test the size
+\citep{Lemaitre2016-gu}. We introduce a sub-sampling procedure to test the size
 of the sample needed in order to train a DL network on a biomedical image
 classification task, and use this procedure in order to assess the number of
 samples needed to train network to accurately discriminate between AMD and
@@ -142,7 +142,7 @@ remainder of this paragraph, we use validation and test error rates
 interchangeably because in our experience they do not differ by more than
 0.1\%''.
 
-The resampling scheme introduced here also presents an opportunity to evaluate
+The sub-sampling scheme introduced here also presents an opportunity to evaluate
 whether this statement generalizes well to situations in which data is much less
 abundant. Therefore, a second aim of the present paper is to assess the use of a
 separate test in cross-validation of a DL network.
