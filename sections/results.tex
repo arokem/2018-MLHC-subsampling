@@ -66,15 +66,15 @@ For each training run, the weights from the training history with the maximal
 validation accuracy were stored. The model was then assessed with these weights
 against the held out test set, yielding 11 test accuracy estimates for each
 proportion, as seen in Figure \ref{fig_test}. As expected, test accuracy
-increased with sample size, reaching its maximal value at subsamples of 100 \%
-($\sim$86 \% accuracy).
+increased with sample size, reaching its maximal value at subsamples of 100\%
+($\sim$86\% accuracy).
 
-Though accuracy is far from chance even with only 4 \% of the data ($\sim$73\%
+Though accuracy is far from chance even with only 4\% of the data ($\sim$73\%
 correct) it does increase precipitously between 4\% and 64\% of the data.
 However, it reaches close-to-maximal accuracy already at a proportion 16 - 32\%
 of the total data-set. To quantify the amount of data needed to reach 95\% of
 the maximal accuracy, we fit a two-parameter function, $f(x) = a \cdot log_2(x) + b$,
-to the accuracy values across repetitions and sub-sample proportions (orange 
+to the accuracy values across repetitions and subsample proportions (orange 
 line in figure \ref{fig_test}). Inverting this function, we find that 95\% of 
 the maximal accuracy (approximately 82\% accuracy) can already be achieved with 
 $\sim30\%$ of the data (dashed lines in \ref{fig_test}).
@@ -86,9 +86,9 @@ $\sim30\%$ of the data (dashed lines in \ref{fig_test}).
 \caption{Accuracy on held out test set. Weights from the highest validation
 accuracy during training were used to test accuracy on a held out test set. Dark
 blue points are the means across 11 repetitions, with dark blue standard
-deviation error bars. Orange line: a model was fit to all of the sub-samples and 
+deviation error bars. Orange line: a model was fit to all of the subsamples and 
 repetitions. According to this model, 95\% of maximal accuracy
-($\sim$82 \% accuracy) can be achieved with 27.2\% of the data (gray lines).}
+($\sim$82\% accuracy) can be achieved with 27.2\% of the data (gray lines).}
 
 \label{fig_test}
 \end{figure}
@@ -99,14 +99,14 @@ Variability of test accuracy also diminished substantially with subsample size.
 Differences in variability in the comparisons across different proportions.
 These differences in variability could reflect two different factors: the first
 is the subsample size, and the other is the degree of overlap between different
-subsamples. For example, for 100 \% subsamples, variability reflects only the
-random initial conditions of the network, because all subsamples of 100 \% are
+subsamples. For example, for 100\% subsamples, variability reflects only the
+random initial conditions of the network, because all subsamples of 100\% are
 identical.  Similarly, the overlap between different subsets in higher
 proportions is likely to be larger than in smaller proportions. To evaluate the
 effect of this overlap, we conducted a separate experiment in which a single
 subset from 4\% group was used, and training was repeated 11 times using the
 same set of images, to control for this effect. The learning curves from this
-protocol are are shown in Figure \ref{fig_fourpercent}B, together with the
+protocol are shown in Figure \ref{fig_fourpercent}B, together with the
 learning curves from random subsamples (Figure \ref{fig_fourpercent}B). The
 learning curves have similar variance as when random subsets are used and the
 maximal validation accuracy (Figure \ref{fig_fourpercent} C) does not differ

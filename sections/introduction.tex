@@ -4,10 +4,10 @@ Deep learning (DL) algorithms \citep{LeCun2015-js} have been tremendously
 successful at solving a variety of different computational tasks. Although these
 algorithms were originally developed to perform computer vision tasks that
 require the identification and classification of natural objects in images
-\citep{Krizhevsky2012-az}, they have been more recently successfully applied in
+\citep{Krizhevsky2012-az}, they have been more recently successfully applied to
 tasks as varied as automated captioning and description of images and
 videos\citep{Karpathy2014-nx, Donahue2014-uq}, automated transcription of spoken
-language \citep{Hannun2014-uj} automated translation \citep{Wu2016-kx}, and in
+language \citep{Hannun2014-uj}, automated translation \citep{Wu2016-kx}, and in
 playing games such as Go \citep{Silver2016-uv} and Poker \citep{Hsu2017-cr},
 beating even highly seasoned players in these games.
 
@@ -70,7 +70,7 @@ Previous applications of DL in medical imaging rely on large data sets, that
 are not available for many other technologies, and for diseases that are less
 common. A major barrier to the wide-spread application of DL algorithms in
 medical imaging is the assumption that these algorithms only work well when
-data is extremely abundant, and that supervised learning can progress using
+data is extremely abundant, and that supervised learning can only progress using
 accurate labels of each image\footnote{``As of 2016, a rough rule of thumb is
 that a supervised deep learning algorithm will generally achieve acceptable
 performance with around 5,000 labeled examples per category, and will match or
@@ -81,7 +81,7 @@ data-set of $\sim$100,000 images \citep{lee2017deep}. Similarly, other studies
 have used data-bases with many thousands of patients and up to millions of
 individual images \citep{Kermany2018-bq}.
 
-Here, we use sub-sampling procedure to assess the decrease in DL
+Here, we use a subsampling procedure to assess the decrease in DL
 classification performance as a function of the number of samples. We apply this
 procedure to empirically evaluate the performance of the VGG16 architecture in
 detecting AMD in retinal OCT. To our knowledge, there is only one previous
@@ -94,7 +94,7 @@ of these body parts differ in many respects, and it is not clear that a much
 simpler algorithm would not perform just as well in this classification task.
 We focused instead on a classification task in which DL algorithms are required
 to perform more accurately than traditional image processing methods
-\citep{Lemaitre2016-gu}. We introduce a sub-sampling procedure to test the size
+\citep{Lemaitre2016-gu}. We introduce a subsampling procedure to test the size
 of the sample needed in order to train a DL network on a biomedical image
 classification task, and use this procedure in order to assess the number of
 samples needed to train network to accurately discriminate between AMD and
@@ -142,7 +142,7 @@ remainder of this paragraph, we use validation and test error rates
 interchangeably because in our experience they do not differ by more than
 0.1\%''.
 
-The sub-sampling scheme introduced here also presents an opportunity to evaluate
+The subsampling scheme introduced here also presents an opportunity to evaluate
 whether this statement generalizes well to situations in which data is much less
 abundant. Therefore, a second aim of the present paper is to assess the use of a
 separate test in cross-validation of a DL network.
